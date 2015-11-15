@@ -2,6 +2,7 @@
 var cluster = require('cluster'),
     cpus = require('os').cpus().length,
     procs = Math.ceil(0.75 * cpus),
+    path = require('path'),
     forking = true;
 
 process.title = 'spark-api';
@@ -9,7 +10,7 @@ process.title = 'spark-api';
 cluster.setupMaster({
     exec: require.resolve('../lib/http.js'),
     execArgv: ['--harmony'],
-    args: [process.argv[2]]
+    args: [path.resolve(process.argv[2])]
 });
 
 function fork() {
