@@ -9,7 +9,7 @@ process.title = 'spark-api';
 
 cluster.setupMaster({
     exec: require.resolve('../lib/http.js'),
-    execArgv: ['--harmony'],
+    execArgv: ['--harmony', '--harmony_destructuring'],
     args: [path.resolve(process.argv[2])]
 });
 
